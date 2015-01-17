@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Home Gym/ViewController.m"
-            timestampString = "443192808.181581"
+            timestampString = "443198756.297613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-getNumberOfSteps"
             landmarkType = "5">
          </BreakpointContent>

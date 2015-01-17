@@ -21,7 +21,7 @@
 @property(nonatomic, strong) NSTimer *timer;
 
 
-@property (nonatomic, readwrite) SPTAudioStreamingController *player;
+@property (nonatomic, strong) SPTAudioStreamingController *player;
 
 
 
@@ -33,7 +33,7 @@
 
 static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
 static NSString * const kCallbackURL = @"jockulus://callback";
-static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
+static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:1234/swap";
 
 - (void)viewDidLoad {
      [super viewDidLoad];
@@ -60,6 +60,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 
 - (void)didReceivePoseChange:(NSNotification*)notification {
+    NSLog(@"Recieved Change");
     TLMPose *pose = notification.userInfo[kTLMKeyPose];
    
     if(pose.type == TLMPoseTypeFist)
@@ -152,6 +153,8 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     UIColor *color = [self colorWithHexString:@"ffffff"];
     self.navigationController.navigationBar.tintColor = color;
     
+    [self.navigationItem.backBarButtonItem setAction:@selector(perform:)];
+    
     
     
     
@@ -174,6 +177,14 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 }
 
 
+-(void) perform:(id)sender {
+    
+    self.player = nil;
+    
+    
+    NSLog(@"Jason");
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 
 
@@ -234,7 +245,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         }
         
         
-        [SPTTrack trackWithURI:[NSURL URLWithString:@"spotify:track:32OlwWuMpZ6b0aN2RZOeMS"] session:nil callback:^(NSError *error, id object) {
+        [SPTTrack trackWithURI:[NSURL URLWithString:@"spotify:track:0ccCwNzXvr1Yoz91vKz31Z"] session:nil callback:^(NSError *error, id object) {
             if(error != nil)
             {
                 NSLog(@"%@", error);

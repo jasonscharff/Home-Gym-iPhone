@@ -19,7 +19,7 @@
 
 static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
 static NSString * const kCallbackURL = @"jockulus://callback";
-static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
+static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:1234/swap";
 
 
 - (void)viewDidLoad {
@@ -38,7 +38,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     SPTAuth *auth = [SPTAuth defaultInstance];
     NSURL *loginURL = [auth loginURLForClientId:kClientId
                             declaredRedirectURL:[NSURL URLWithString:kCallbackURL]
-                                         scopes:@[SPTAuthStreamingScope]];
+                                         scopes:@[SPTAuthStreamingScope, SPTAuthUserReadPrivateScope]];
     
     // Opening a URL in Safari close to application launch may trigger
     // an iOS bug, so we wait a bit before doing so.

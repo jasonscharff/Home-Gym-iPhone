@@ -128,7 +128,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
 static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
 static NSString * const kCallbackURL = @"jockulus://callback";
-static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
+static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:1234/swap";
 
 
 
@@ -164,12 +164,19 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 //              Call the -playUsingSession: method to play a track
              self.session = session;
              
+             
+             [SPTRequest userInformationForUserInSession:session callback:^(NSError *error, SPTUser * object) {
+                 NSLog(@"username : %@", object.canonicalUserName);
+             }];
+           
+             
+             
              NSString *storyboardName = @"Main";
              UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
              UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"playView"];
               [(UINavigationController*)self.window.rootViewController pushViewController:vc animated:YES];
              
-//             [self playUsingSession:session];
+
          }];
         return YES;
     }
