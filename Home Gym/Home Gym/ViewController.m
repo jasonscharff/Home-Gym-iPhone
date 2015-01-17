@@ -11,6 +11,7 @@
 #import <Spotify/Spotify.h>
 #import "AppDelegate.h"
 #import <MyoKit/MyoKit.h>
+#import "JCSong.h"
 
 
 @import CoreMotion;
@@ -19,6 +20,9 @@
 
 @property (nonatomic, strong) CMPedometer *counter;
 @property(nonatomic, strong) NSTimer *timer;
+
+@property(nonatomic, strong) NSArray *playlist;
+@property(nonatomic) int placeInList;
 
 
 @property (nonatomic, strong) SPTAudioStreamingController *player;
@@ -38,10 +42,11 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
 - (void)viewDidLoad {
      [super viewDidLoad];
     [self prepNavBar];
+    self.placeInList = 0;
     
-//    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
-     AppDelegate *delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [self playUsingSession:delegate.session];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
+    
+    
     
     [[TLMHub sharedHub] setLockingPolicy:TLMLockingPolicyNone];
     
@@ -62,32 +67,67 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
 - (void)didReceivePoseChange:(NSNotification*)notification {
     NSLog(@"Recieved Change");
     TLMPose *pose = notification.userInfo[kTLMKeyPose];
-   
-    if(pose.type == TLMPoseTypeFist)
+    
+    
+    if(pose.type == TLMPoseTypeDoubleTap)
     {
-        //Pause song
-        [_player setIsPlaying:NO callback:^(NSError *error) {
-            if(error)
-            {
-                NSLog(@"%@", error);
-            }
-        }];
-         
+        if ([_player isPlaying])
+        {
+            [_player setIsPlaying:NO callback:^(NSError *error) {
+                if(error)
+                {
+                    NSLog(@"%@", error);
+                }
+            }];
+        }
+        else
+        {
+            [_player setIsPlaying:YES callback:^(NSError *error) {
+                if(error)
+                {
+                    NSLog(@"%@", error);
+                }
+            }];
+        }
     }
-    else if (pose.type == TLMPoseTypeFingersSpread)
-    {
-        [_player setIsPlaying:YES callback:^(NSError *error) {
-            if(error)
-            {
-                NSLog(@"%@", error);
-            }
-        }];
-         
-    }
+    
     
     else if (pose.type == TLMPoseTypeWaveIn || pose.type == TLMPoseTypeWaveOut)
     {
-        //Get new song ID from server
+        self.placeInList++;
+        if (self.placeInList == [self.playlist count])
+        {
+            _placeInList = 0;
+        }
+
+        NSString *track = @"spotify:track:";
+        JCSong *song = self.playlist[self.placeInList];
+        
+        track = [track stringByAppendingString:song.spotify_id];
+        [SPTTrack trackWithURI:[NSURL URLWithString:track] session:nil callback:^(NSError *error, id object) {
+            if(error != nil)
+            {
+                NSLog(@"%@", error);
+            }
+            else
+            {
+                NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                NSDictionary *parameters = @{@"echo_nest_id": song.echonest_id, @"username" : username};
+                [manager POST:@"http://pennapps.gomurmur.com/update_song.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSLog(@"%@", responseObject);
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                    
+                }];
+                
+                [self.player playTrackProvider:object callback:nil];
+            }
+            
+            
+        }];
+        
+        
     }
     
 }
@@ -135,16 +175,65 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     NSDictionary *parameters = @{@"bpm": steps};
     [manager POST:@"http://pennapps.gomurmur.com/get_songs.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         toReturn = true;
-//        NSLog(@"JSON: %@", responseObject);
-        NSLog(@"Here");
+        [self parseSongs:responseObject];
+        NSString *value = responseObject[0][@"id"];
+        NSLog(@"%@", value);
+        
+        
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         toReturn = false;
+        
     }];
+    
+    
+    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+    NSDictionary *parametersSecond = @{@"bpm": [[NSNumber alloc]initWithInt:(150)], @"data" : @"update", @"username":username};
+    [manager POST:@"http://pennapps.gomurmur.com/bpm.php" parameters:parametersSecond success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+    
+    
 
     return toReturn;
 }
 
+
+-(NSArray * )parseSongs : (NSArray *)response
+{
+    BOOL startOver = true;
+    NSMutableArray *array = [[NSMutableArray alloc]initWithCapacity:[response count]];
+    for (int i = 0; i < [response count]; i++)
+    {
+        JCSong *song = [[JCSong alloc]init];
+        
+        song.spotify_id = response[i][@"id"];
+        if([[@"spotify:track:" stringByAppendingString:song.spotify_id]isEqualToString:[self.player currentTrackMetadata][@"SPTAudioStreamingMetadataTrackURI"]])
+        {
+            startOver = false;
+        }
+        
+        song.echonest_id = response[i][@"echo_nest"];
+        [array addObject:song];
+    }
+    
+    
+    
+    if([self.player isPlaying] == NO || startOver == true)
+    {
+        self.playlist = array;
+        AppDelegate *delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+        [self playUsingSession:delegate.session];
+    }
+    
+    
+    return array;
+                                                                                                  
+}
 
 
 -(void)prepNavBar
@@ -180,9 +269,8 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
 -(void) perform:(id)sender {
     
     self.player = nil;
+
     
-    
-    NSLog(@"Jason");
     [self.navigationController popViewControllerAnimated:NO];
 }
 
@@ -244,15 +332,26 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
             return;
         }
         
-        
-        [SPTTrack trackWithURI:[NSURL URLWithString:@"spotify:track:0ccCwNzXvr1Yoz91vKz31Z"] session:nil callback:^(NSError *error, id object) {
+        NSString *track = @"spotify:track:";
+        JCSong *song = self.playlist[self.placeInList];
+        track = [track stringByAppendingString:song.spotify_id];
+        [SPTTrack trackWithURI:[NSURL URLWithString:track] session:nil callback:^(NSError *error, id object) {
             if(error != nil)
             {
                 NSLog(@"%@", error);
             }
             else
             {
-                NSLog(@"lucky day");
+                NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                NSDictionary *parameters = @{@"echo_nest_id": song.echonest_id, @"username" : username};
+                [manager POST:@"http://pennapps.gomurmur.com/update_song.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSLog(@"%@", responseObject);
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                    
+                }];
+
                 [self.player playTrackProvider:object callback:nil];
             }
             

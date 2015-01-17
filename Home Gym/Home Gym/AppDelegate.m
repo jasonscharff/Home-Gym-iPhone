@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <Spotify/Spotify.h>
 #import <MyoKit/MyoKit.h>
+#import "AFHTTPRequestOperationManager.h"
 
 @interface AppDelegate ()
 
@@ -166,7 +167,23 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
              
              
              [SPTRequest userInformationForUserInSession:session callback:^(NSError *error, SPTUser * object) {
-                 NSLog(@"username : %@", object.canonicalUserName);
+                 NSString *username = object.canonicalUserName;
+                 [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"username"];
+                 [[NSUserDefaults standardUserDefaults] synchronize];
+                 
+                 
+                 AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                 NSDictionary *parameters = @{@"username": username};
+                 [manager POST:@"http://pennapps.gomurmur.com/register_user.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+                     
+                     
+                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                     NSLog(@"Error: %@", error);
+                     
+                 }];
+
+                 
              }];
            
              
