@@ -10,6 +10,8 @@
 #import "AFHTTPRequestOperationManager.h"
 #import <Spotify/Spotify.h>
 #import "AppDelegate.h"
+#import <MyoKit/MyoKit.h>
+
 
 @import CoreMotion;
 
@@ -38,9 +40,15 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     [self prepNavBar];
     
 //    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
-    NSLog(@"HERE:");
      AppDelegate *delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self playUsingSession:delegate.session];
+    
+    [[TLMHub sharedHub] setLockingPolicy:TLMLockingPolicyNone];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didReceivePoseChange:)
+                                                 name:TLMMyoDidReceivePoseChangedNotification
+                                               object:nil];
     
 
     
@@ -51,7 +59,37 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 }
 
 
-
+- (void)didReceivePoseChange:(NSNotification*)notification {
+    TLMPose *pose = notification.userInfo[kTLMKeyPose];
+   
+    if(pose.type == TLMPoseTypeFist)
+    {
+        //Pause song
+        [_player setIsPlaying:NO callback:^(NSError *error) {
+            if(error)
+            {
+                NSLog(@"%@", error);
+            }
+        }];
+         
+    }
+    else if (pose.type == TLMPoseTypeFingersSpread)
+    {
+        [_player setIsPlaying:YES callback:^(NSError *error) {
+            if(error)
+            {
+                NSLog(@"%@", error);
+            }
+        }];
+         
+    }
+    
+    else if (pose.type == TLMPoseTypeWaveIn || pose.type == TLMPoseTypeWaveOut)
+    {
+        //Get new song ID from server
+    }
+    
+}
 
 
 -(void)getNumberOfSteps

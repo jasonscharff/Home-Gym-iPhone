@@ -11,6 +11,10 @@
 		BEAD94E71A6A41C400B29095 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94E61A6A41C400B29095 /* AVFoundation.framework */; };
 		BEAD94EA1A6A4EA700B29095 /* LogInWIthSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */; };
 		BEAD94EC1A6A58D300B29095 /* ConnectToSpotify.png in Resources */ = {isa = PBXBuildFile; fileRef = BEAD94EB1A6A58D300B29095 /* ConnectToSpotify.png */; };
+		BEAD94F01A6A90F900B29095 /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94EF1A6A90F900B29095 /* MyoKit.framework */; };
+		BEAD94F21A6A916100B29095 /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94F11A6A916100B29095 /* MyoKit.framework */; };
+		BEAD94F41A6A916F00B29095 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94F31A6A916F00B29095 /* CoreBluetooth.framework */; };
+		BEAD94F61A6A918100B29095 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94F51A6A918100B29095 /* SystemConfiguration.framework */; };
 		BEED92F81A6A0C160062B901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED92F71A6A0C160062B901 /* main.m */; };
 		BEED92FB1A6A0C160062B901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED92FA1A6A0C160062B901 /* AppDelegate.m */; };
 		BEED92FE1A6A0C160062B901 /* Home_Gym.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEED92FC1A6A0C160062B901 /* Home_Gym.xcdatamodeld */; };
@@ -47,6 +51,11 @@
 		BEAD94E81A6A4EA700B29095 /* LogInWIthSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInWIthSpotify.h; sourceTree = "<group>"; };
 		BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInWIthSpotify.m; sourceTree = "<group>"; };
 		BEAD94EB1A6A58D300B29095 /* ConnectToSpotify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConnectToSpotify.png; sourceTree = "<group>"; };
+		BEAD94ED1A6A906000B29095 /* myo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = myo.framework; sourceTree = "<group>"; };
+		BEAD94EF1A6A90F900B29095 /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
+		BEAD94F11A6A916100B29095 /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MyoKit.framework; sourceTree = "<group>"; };
+		BEAD94F31A6A916F00B29095 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BEAD94F51A6A918100B29095 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BEED92F21A6A0C160062B901 /* Home Gym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Gym.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEED92F61A6A0C160062B901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEED92F71A6A0C160062B901 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,7 +97,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEAD94F61A6A918100B29095 /* SystemConfiguration.framework in Frameworks */,
+				BEAD94F41A6A916F00B29095 /* CoreBluetooth.framework in Frameworks */,
 				BEAD94E71A6A41C400B29095 /* AVFoundation.framework in Frameworks */,
+				BEAD94F21A6A916100B29095 /* MyoKit.framework in Frameworks */,
+				BEAD94F01A6A90F900B29095 /* MyoKit.framework in Frameworks */,
 				BEED931F1A6A0E790062B901 /* CoreMotion.framework in Frameworks */,
 				BEAD94E51A6A3B0400B29095 /* Spotify.framework in Frameworks */,
 			);
@@ -107,6 +120,10 @@
 		BEED92E91A6A0C160062B901 = {
 			isa = PBXGroup;
 			children = (
+				BEAD94F51A6A918100B29095 /* SystemConfiguration.framework */,
+				BEAD94F31A6A916F00B29095 /* CoreBluetooth.framework */,
+				BEAD94EF1A6A90F900B29095 /* MyoKit.framework */,
+				BEAD94ED1A6A906000B29095 /* myo.framework */,
 				BEAD94E61A6A41C400B29095 /* AVFoundation.framework */,
 				BEAD94E41A6A3B0400B29095 /* Spotify.framework */,
 				BEED931E1A6A0E790062B901 /* CoreMotion.framework */,
@@ -132,6 +149,7 @@
 			children = (
 				BEED92F91A6A0C160062B901 /* AppDelegate.h */,
 				BEED92FA1A6A0C160062B901 /* AppDelegate.m */,
+				BEAD94F11A6A916100B29095 /* MyoKit.framework */,
 				BEED92FF1A6A0C160062B901 /* ViewController.h */,
 				BEED93001A6A0C160062B901 /* ViewController.m */,
 				BEED93021A6A0C160062B901 /* Main.storyboard */,
@@ -438,6 +456,8 @@
 					"$(PROJECT_DIR)/Home",
 					Gym/AFNetworking,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Home",
+					Gym,
 				);
 				INFOPLIST_FILE = "Home Gym/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -455,6 +475,8 @@
 					"$(PROJECT_DIR)/Home",
 					Gym/AFNetworking,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Home",
+					Gym,
 				);
 				INFOPLIST_FILE = "Home Gym/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

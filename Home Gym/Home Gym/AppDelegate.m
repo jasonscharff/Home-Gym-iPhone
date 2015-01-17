@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Spotify/Spotify.h>
+#import <MyoKit/MyoKit.h>
 
 @interface AppDelegate ()
 
@@ -25,6 +26,7 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [TLMHub sharedHub];
 
     
     return YES;

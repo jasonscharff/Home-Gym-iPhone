@@ -8,6 +8,7 @@
 
 #import "LogInWIthSpotify.h"
 #import <Spotify/Spotify.h>
+#import <MyoKit/MyoKit.h>
 
 @interface LogInWIthSpotify ()
 
@@ -23,6 +24,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self prepNavBar];
     // Do any additional setup after loading the view.
 }
 
@@ -43,6 +45,74 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     [[UIApplication sharedApplication] performSelector:@selector(openURL:)
                       withObject:loginURL afterDelay:0.1];
 }
+
+- (IBAction)connectToMyo:(id)sender
+{
+    UINavigationController *settings = [TLMSettingsViewController settingsInNavigationController];
+    
+    [self presentViewController:settings animated:YES completion:nil];
+}
+
+-(void)prepNavBar
+{
+    
+    UIColor *color = [self colorWithHexString:@"ffffff"];
+    self.navigationController.navigationBar.tintColor = color;
+    
+    
+    
+    
+    NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    color,NSForegroundColorAttributeName,
+                                    color,NSBackgroundColorAttributeName,[UIFont fontWithName:@"Avenir-Light" size:25.0f],NSFontAttributeName,nil];
+    self.navigationController.navigationBar.titleTextAttributes = textAttributes;
+    
+    
+    
+    self.navigationController.navigationBar.barTintColor = [self colorWithHexString:@"c0392b"];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationItem.title = @"Jockulus";
+}
+
+
+
+-(UIColor*)colorWithHexString:(NSString*)hex
+{
+    NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
+    
+    // String should be 6 or 8 characters
+    if ([cString length] < 6) return [UIColor grayColor];
+    
+    // strip 0X if it appears
+    if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
+    
+    if ([cString length] != 6) return  [UIColor grayColor];
+    
+    // Separate into r, g, b substrings
+    NSRange range;
+    range.location = 0;
+    range.length = 2;
+    NSString *rString = [cString substringWithRange:range];
+    
+    range.location = 2;
+    NSString *gString = [cString substringWithRange:range];
+    
+    range.location = 4;
+    NSString *bString = [cString substringWithRange:range];
+    
+    // Scan values
+    unsigned int r, g, b;
+    [[NSScanner scannerWithString:rString] scanHexInt:&r];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:bString] scanHexInt:&b];
+    
+    return [UIColor colorWithRed:((float) r / 255.0f)
+                           green:((float) g / 255.0f)
+                            blue:((float) b / 255.0f)
+                           alpha:1.0f];
+}
+
+
 
 /*
 #pragma mark - Navigation
