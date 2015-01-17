@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BEAD94E51A6A3B0400B29095 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94E41A6A3B0400B29095 /* Spotify.framework */; };
+		BEAD94E71A6A41C400B29095 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94E61A6A41C400B29095 /* AVFoundation.framework */; };
+		BEAD94EA1A6A4EA700B29095 /* LogInWIthSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */; };
 		BEED92F81A6A0C160062B901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED92F71A6A0C160062B901 /* main.m */; };
 		BEED92FB1A6A0C160062B901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED92FA1A6A0C160062B901 /* AppDelegate.m */; };
 		BEED92FE1A6A0C160062B901 /* Home_Gym.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEED92FC1A6A0C160062B901 /* Home_Gym.xcdatamodeld */; };
@@ -25,7 +28,6 @@
 		BEED93A01A6A2A880062B901 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED93951A6A2A880062B901 /* AFURLRequestSerialization.m */; };
 		BEED93A11A6A2A880062B901 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED93971A6A2A880062B901 /* AFURLResponseSerialization.m */; };
 		BEED93A21A6A2A880062B901 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED93991A6A2A880062B901 /* AFURLSessionManager.m */; };
-		BEED93A41A6A32F40062B901 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEED93A31A6A32F40062B901 /* Spotify.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BEAD94E41A6A3B0400B29095 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Spotify.framework; sourceTree = "<group>"; };
+		BEAD94E61A6A41C400B29095 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BEAD94E81A6A4EA700B29095 /* LogInWIthSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInWIthSpotify.h; sourceTree = "<group>"; };
+		BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInWIthSpotify.m; sourceTree = "<group>"; };
 		BEED92F21A6A0C160062B901 /* Home Gym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Gym.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEED92F61A6A0C160062B901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEED92F71A6A0C160062B901 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -73,7 +79,6 @@
 		BEED93971A6A2A880062B901 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		BEED93981A6A2A880062B901 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		BEED93991A6A2A880062B901 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		BEED93A31A6A32F40062B901 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = "Home Gym/AFNetworking/Spotify.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +86,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEAD94E71A6A41C400B29095 /* AVFoundation.framework in Frameworks */,
 				BEED931F1A6A0E790062B901 /* CoreMotion.framework in Frameworks */,
-				BEED93A41A6A32F40062B901 /* Spotify.framework in Frameworks */,
+				BEAD94E51A6A3B0400B29095 /* Spotify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +105,8 @@
 		BEED92E91A6A0C160062B901 = {
 			isa = PBXGroup;
 			children = (
-				BEED93A31A6A32F40062B901 /* Spotify.framework */,
+				BEAD94E61A6A41C400B29095 /* AVFoundation.framework */,
+				BEAD94E41A6A3B0400B29095 /* Spotify.framework */,
 				BEED931E1A6A0E790062B901 /* CoreMotion.framework */,
 				BEED92F41A6A0C160062B901 /* Home Gym */,
 				BEED93111A6A0C160062B901 /* Home GymTests */,
@@ -125,6 +132,8 @@
 				BEED92FF1A6A0C160062B901 /* ViewController.h */,
 				BEED93001A6A0C160062B901 /* ViewController.m */,
 				BEED93021A6A0C160062B901 /* Main.storyboard */,
+				BEAD94E81A6A4EA700B29095 /* LogInWIthSpotify.h */,
+				BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */,
 				BEED93051A6A0C160062B901 /* Images.xcassets */,
 				BEED93071A6A0C160062B901 /* LaunchScreen.xib */,
 				BEED92FC1A6A0C160062B901 /* Home_Gym.xcdatamodeld */,
@@ -297,6 +306,7 @@
 				BEED939D1A6A2A880062B901 /* AFNetworkReachabilityManager.m in Sources */,
 				BEED93A11A6A2A880062B901 /* AFURLResponseSerialization.m in Sources */,
 				BEED93A21A6A2A880062B901 /* AFURLSessionManager.m in Sources */,
+				BEAD94EA1A6A4EA700B29095 /* LogInWIthSpotify.m in Sources */,
 				BEED92FE1A6A0C160062B901 /* Home_Gym.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,9 +433,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Home",
 					Gym/AFNetworking,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Home Gym/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -438,9 +450,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Home",
 					Gym/AFNetworking,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Home Gym/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -498,6 +512,7 @@
 				BEED931A1A6A0C160062B901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BEED931B1A6A0C160062B901 /* Build configuration list for PBXNativeTarget "Home GymTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +521,7 @@
 				BEED931D1A6A0C160062B901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

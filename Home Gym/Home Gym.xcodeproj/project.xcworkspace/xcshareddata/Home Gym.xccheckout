@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>064B1990-5BFC-43EE-9436-853CB659C693</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Home Gym</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>77250F17C486007B6A8617EC3BEB6F519B825BAC</key>
+		<string>https://github.com/jasonscharff/Home-Gym-iPhone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Home Gym/Home Gym.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>77250F17C486007B6A8617EC3BEB6F519B825BAC</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jasonscharff/Home-Gym-iPhone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>77250F17C486007B6A8617EC3BEB6F519B825BAC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>77250F17C486007B6A8617EC3BEB6F519B825BAC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Home-Gym-iPhone</string>
+		</dict>
+	</array>
+</dict>
+</plist>

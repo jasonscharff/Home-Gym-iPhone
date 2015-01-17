@@ -8,12 +8,19 @@
 
 #import "ViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import <Spotify/Spotify.h>
 @import CoreMotion;
 
 @interface ViewController ()
 
 @property (nonatomic, strong) CMPedometer *counter;
 @property(nonatomic, strong) NSTimer *timer;
+
+@property (nonatomic, strong) SPTSession *session;
+@property (nonatomic, strong) SPTAudioStreamingController *player;
+
+
+
 
 @end
 
@@ -23,20 +30,37 @@
 - (void)viewDidLoad {
      [super viewDidLoad];
     
-    _timer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
+//    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
     
     
-//   
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//    [self getNumberOfSteps];
-//       
-//});
+    
+
     
     
     
     
     // Do any additional setup after loading the view, typically from a nib.
 }
+
+
+-(void)spotify
+{
+    static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
+    static NSString * const kCallbackURL = @"jockulus://callback";
+    static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
+    
+    SPTAuth *auth = [SPTAuth defaultInstance];
+    NSURL *loginURL = [auth loginURLForClientId:kClientId
+                            declaredRedirectURL:[NSURL URLWithString:kCallbackURL]
+                                         scopes:@[SPTAuthStreamingScope]];
+    
+    // Opening a URL in Safari close to application launch may trigger
+    // an iOS bug, so we wait a bit before doing so.
+    [UIApplication performSelector:@selector(openURL:)
+                      withObject:loginURL afterDelay:0.1];
+}
+
+
 
 -(void)getNumberOfSteps
 {
@@ -59,7 +83,7 @@
          else
          {
        
-             NSNumber *stepCount = [[NSNumber alloc] initWithInt:(pedometerData.numberOfSteps.intValue * 12)];
+             NSNumber *stepCount = [[NSNumber alloc] initWithInt:(pedometerData.numberOfSteps.intValue * 20)];
              NSLog(@"%@", stepCount);
              [self sendToNetwork:stepCount];
              
