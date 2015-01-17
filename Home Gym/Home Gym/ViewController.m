@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "AFHTTPRequestOperationManager.h"
 #import <Spotify/Spotify.h>
+#import "AppDelegate.h"
+
 @import CoreMotion;
 
 @interface ViewController ()
@@ -16,8 +18,8 @@
 @property (nonatomic, strong) CMPedometer *counter;
 @property(nonatomic, strong) NSTimer *timer;
 
-@property (nonatomic, strong) SPTSession *session;
-@property (nonatomic, strong) SPTAudioStreamingController *player;
+
+@property (nonatomic, readwrite) SPTAudioStreamingController *player;
 
 
 
@@ -27,13 +29,18 @@
 @implementation ViewController
 
 
+static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
+static NSString * const kCallbackURL = @"jockulus://callback";
+static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
+
 - (void)viewDidLoad {
      [super viewDidLoad];
     [self prepNavBar];
     
 //    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
-    
-    
+    NSLog(@"HERE:");
+     AppDelegate *delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self playUsingSession:delegate.session];
     
 
     
@@ -44,22 +51,6 @@
 }
 
 
--(void)spotify
-{
-    static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
-    static NSString * const kCallbackURL = @"jockulus://callback";
-    static NSString * const kTokenSwapURL = @"http://localhost:1234/swap";
-    
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    NSURL *loginURL = [auth loginURLForClientId:kClientId
-                            declaredRedirectURL:[NSURL URLWithString:kCallbackURL]
-                                         scopes:@[SPTAuthStreamingScope]];
-    
-    // Opening a URL in Safari close to application launch may trigger
-    // an iOS bug, so we wait a bit before doing so.
-    [UIApplication performSelector:@selector(openURL:)
-                      withObject:loginURL afterDelay:0.1];
-}
 
 
 
@@ -182,6 +173,48 @@
                            green:((float) g / 255.0f)
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
+}
+
+
+
+
+-(void)playUsingSession:(SPTSession *)session {
+    
+    NSLog(@"Here");
+    
+    
+    // Create a new player if needed
+    if (self.player == nil) {
+        self.player = [[SPTAudioStreamingController alloc] initWithClientId:kClientId];
+    }
+    
+    [self.player loginWithSession:session callback:^(NSError *error) {
+        
+        if (error != nil) {
+            NSLog(@"*** Enabling playback got error: %@", error);
+            return;
+        }
+        
+        
+        [SPTTrack trackWithURI:[NSURL URLWithString:@"spotify:track:32OlwWuMpZ6b0aN2RZOeMS"] session:nil callback:^(NSError *error, id object) {
+            if(error != nil)
+            {
+                NSLog(@"%@", error);
+            }
+            else
+            {
+                NSLog(@"lucky day");
+                [self.player playTrackProvider:object callback:nil];
+            }
+            
+            
+        }];
+        
+        
+    }];
+    
+    
+    
 }
 
 

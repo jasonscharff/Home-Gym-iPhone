@@ -11,7 +11,7 @@
 
 @interface AppDelegate ()
 
-@property (nonatomic, readwrite) SPTAudioStreamingController *player;
+
 
 
 
@@ -25,16 +25,7 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    // Create SPTAuth instance; create login URL and open it
-    SPTAuth *auth = [SPTAuth defaultInstance];
-    NSURL *loginURL = [auth loginURLForClientId:kClientId
-                            declaredRedirectURL:[NSURL URLWithString:kCallbackURL]
-                                         scopes:@[SPTAuthStreamingScope]];
-    
-    // Opening a URL in Safari close to application launch may trigger
-    // an iOS bug, so we wait a bit before doing so.
-    [application performSelector:@selector(openURL:)
-                      withObject:loginURL afterDelay:0.1];
+
     
     return YES;
 }
@@ -147,6 +138,7 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
         annotation:(id)annotation {
     
     
+    
     // Ask SPTAuth if the URL given is a Spotify authentication callback
     
     if ([[SPTAuth defaultInstance]
@@ -167,8 +159,15 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
                  return;
              }
              
-             // Call the -playUsingSession: method to play a track
-             [self playUsingSession:session];
+//              Call the -playUsingSession: method to play a track
+             self.session = session;
+             
+             NSString *storyboardName = @"Main";
+             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
+             UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"playView"];
+              [(UINavigationController*)self.window.rootViewController pushViewController:vc animated:YES];
+             
+//             [self playUsingSession:session];
          }];
         return YES;
     }
@@ -176,51 +175,8 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     return NO;
 }
 
--(void)playUsingSession:(SPTSession *)session {
-    
-    // Create a new player if needed
-    if (self.player == nil) {
-        self.player = [[SPTAudioStreamingController alloc] initWithClientId:kClientId];
-    }
-    
-    [self.player loginWithSession:session callback:^(NSError *error) {
-        
-        if (error != nil) {
-            NSLog(@"*** Enabling playback got error: %@", error);
-            return;
-        }
-        
-//        [SPTRequest requestItemAtURI:[NSURL URLWithString:@"spotify:track:SOSACAB14A63CF325C"]
-//                         withSession:nil
-//                            callback:^(NSError *error, SPTTrack *theAlbum) {
-//                                if (error != nil) {
-//                                    NSLog(@"*** Album lookup got error %@", error);
-//                                    return;
-//                                }
-//                                [self.player playTrackProvider:theAlbum callback:nil];
-//                                
-//                            }];
-        
-        [SPTTrack trackWithURI:[NSURL URLWithString:@"spotify:track:32OlwWuMpZ6b0aN2RZOeMS"] session:nil callback:^(NSError *error, id object) {
-            if(error != nil)
-            {
-                NSLog(@"%@", error);
-            }
-            else
-            {
-                NSLog(@"lucky day");
-                [self.player playTrackProvider:object callback:nil];
-            }
-            
-            
-        }];
-        
-        
-    }];
-    
-    
-    
-}
+
+
 
 
 
