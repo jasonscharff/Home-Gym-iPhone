@@ -10,6 +10,7 @@
 		BEAD94E51A6A3B0400B29095 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94E41A6A3B0400B29095 /* Spotify.framework */; };
 		BEAD94E71A6A41C400B29095 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94E61A6A41C400B29095 /* AVFoundation.framework */; };
 		BEAD94EA1A6A4EA700B29095 /* LogInWIthSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */; };
+		BEAD94EC1A6A58D300B29095 /* ConnectToSpotify.png in Resources */ = {isa = PBXBuildFile; fileRef = BEAD94EB1A6A58D300B29095 /* ConnectToSpotify.png */; };
 		BEED92F81A6A0C160062B901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED92F71A6A0C160062B901 /* main.m */; };
 		BEED92FB1A6A0C160062B901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEED92FA1A6A0C160062B901 /* AppDelegate.m */; };
 		BEED92FE1A6A0C160062B901 /* Home_Gym.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BEED92FC1A6A0C160062B901 /* Home_Gym.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		BEAD94E61A6A41C400B29095 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BEAD94E81A6A4EA700B29095 /* LogInWIthSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInWIthSpotify.h; sourceTree = "<group>"; };
 		BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInWIthSpotify.m; sourceTree = "<group>"; };
+		BEAD94EB1A6A58D300B29095 /* ConnectToSpotify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ConnectToSpotify.png; sourceTree = "<group>"; };
 		BEED92F21A6A0C160062B901 /* Home Gym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Home Gym.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEED92F61A6A0C160062B901 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEED92F71A6A0C160062B901 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				BEED92F41A6A0C160062B901 /* Home Gym */,
 				BEED93111A6A0C160062B901 /* Home GymTests */,
 				BEED92F31A6A0C160062B901 /* Products */,
+				BEAD94EB1A6A58D300B29095 /* ConnectToSpotify.png */,
 				BEED93861A6A2A880062B901 /* AFNetworking */,
 			);
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			files = (
 				BEED93041A6A0C160062B901 /* Main.storyboard in Resources */,
 				BEED93091A6A0C160062B901 /* LaunchScreen.xib in Resources */,
+				BEAD94EC1A6A58D300B29095 /* ConnectToSpotify.png in Resources */,
 				BEED93061A6A0C160062B901 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

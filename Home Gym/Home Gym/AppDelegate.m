@@ -148,11 +148,15 @@ static NSString * const kTokenSwapServiceURL = @"http://localhost:1234/swap";
     
     
     // Ask SPTAuth if the URL given is a Spotify authentication callback
+    
     if ([[SPTAuth defaultInstance]
          canHandleURL:url
          withDeclaredRedirectURL:[NSURL URLWithString:kCallbackURL]]) {
         
         // Call the token swap service to get a logged in session
+        
+        
+        
         [[SPTAuth defaultInstance]
          handleAuthCallbackWithTriggeredAuthURL:url
          tokenSwapServiceEndpointAtURL:[NSURL URLWithString:kTokenSwapServiceURL]
