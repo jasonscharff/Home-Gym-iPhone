@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Home Gym/ViewController.m"
-            timestampString = "443211755.248777"
+            timestampString = "443220657.585896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "-getNumberOfSteps"
             landmarkType = "5">
          </BreakpointContent>
@@ -40,11 +40,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Home Gym/ViewController.m"
-            timestampString = "443211755.248777"
+            timestampString = "443220657.585896"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
             landmarkName = "-parseSongs:"
             landmarkType = "5">
          </BreakpointContent>
