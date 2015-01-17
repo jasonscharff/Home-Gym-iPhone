@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import <MyoKit/MyoKit.h>
 #import "JCSong.h"
+#import "RewardViewController.h"
 
 
 @import CoreMotion;
@@ -36,12 +37,19 @@
 
 @implementation ViewController
 
+@synthesize button;
+
 
 static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
 static NSString * const kCallbackURL = @"jockulus://callback";
 static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:1234/swap";
 
+int steps = 0;
+
 - (void)viewDidLoad {
+    
+    [button addTarget:self action:@selector(goRewards) forControlEvents:UIControlEventTouchUpInside];
+    
     [super viewDidLoad];
     [self prepNavBar];
     self.lastStepCount = -25;
@@ -214,6 +222,8 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
              
              NSNumber *stepCount = [[NSNumber alloc] initWithInt:(pedometerData.numberOfSteps.intValue * 20)];
              NSLog(@"%@", stepCount);
+             steps += pedometerData.numberOfSteps.intValue;
+             [[NSUserDefaults standardUserDefaults] setInteger:steps forKey:@"steps"];
              
              if (self.lastStepCount > stepCount.intValue + 21 || self.lastStepCount < (stepCount.intValue - 21))
              {
@@ -408,6 +418,12 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
 }
 
 
+
+-(void)goRewards
+{
+    RewardViewController *view = [self.storyboard instantiateViewControllerWithIdentifier:@"rewards"];
+    [self presentViewController:view animated:true completion:nil];
+}
 
 
 -(void)playUsingSession:(SPTSession *)session {

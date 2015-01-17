@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2AC5C71A6B163700AF0D5D /* RewardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A2AC5C61A6B163700AF0D5D /* RewardViewController.m */; };
 		BE26C9CA1A6B099200FE7612 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9C91A6B099200FE7612 /* main.m */; };
 		BE26C9CD1A6B099200FE7612 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CC1A6B099200FE7612 /* AppDelegate.m */; };
 		BE26C9D01A6B099200FE7612 /* Jockulus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A2AC5C51A6B163700AF0D5D /* RewardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardViewController.h; sourceTree = "<group>"; };
+		0A2AC5C61A6B163700AF0D5D /* RewardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardViewController.m; sourceTree = "<group>"; };
 		BE26C9C41A6B099100FE7612 /* Jockulus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jockulus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE26C9C81A6B099200FE7612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE26C9C91A6B099200FE7612 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -145,12 +148,14 @@
 				BE26CA111A6B0A0200FE7612 /* JCSong.m */,
 				BE26CA0D1A6B09F800FE7612 /* LogInWIthSpotify.h */,
 				BE26CA0E1A6B09F800FE7612 /* LogInWIthSpotify.m */,
+				0A2AC5C51A6B163700AF0D5D /* RewardViewController.h */,
+				0A2AC5C61A6B163700AF0D5D /* RewardViewController.m */,
 				BE26C9F01A6B09AD00FE7612 /* AFNetworking */,
 				BE26C9CB1A6B099200FE7612 /* AppDelegate.h */,
 				BE26C9CC1A6B099200FE7612 /* AppDelegate.m */,
 				BE26C9D11A6B099200FE7612 /* ViewController.h */,
-				BE26CA171A6B0A3D00FE7612 /* Main.storyboard */,
 				BE26C9D21A6B099200FE7612 /* ViewController.m */,
+				BE26CA171A6B0A3D00FE7612 /* Main.storyboard */,
 				BE26C9D71A6B099200FE7612 /* Images.xcassets */,
 				BE26C9D91A6B099200FE7612 /* LaunchScreen.xib */,
 				BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */,
@@ -316,6 +321,7 @@
 				BE26CA081A6B09AD00FE7612 /* AFSecurityPolicy.m in Sources */,
 				BE26C9D01A6B099200FE7612 /* Jockulus.xcdatamodeld in Sources */,
 				BE26CA051A6B09AD00FE7612 /* AFHTTPRequestOperationManager.m in Sources */,
+				0A2AC5C71A6B163700AF0D5D /* RewardViewController.m in Sources */,
 				BE26CA091A6B09AD00FE7612 /* AFURLConnectionOperation.m in Sources */,
 				BE26CA041A6B09AD00FE7612 /* AFHTTPRequestOperation.m in Sources */,
 				BE26C9D31A6B099200FE7612 /* ViewController.m in Sources */,
@@ -446,6 +452,7 @@
 					"$(PROJECT_DIR)/Jockulus",
 				);
 				INFOPLIST_FILE = Jockulus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -460,6 +467,7 @@
 					"$(PROJECT_DIR)/Jockulus",
 				);
 				INFOPLIST_FILE = Jockulus/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -518,6 +526,7 @@
 				BE26C9EC1A6B099200FE7612 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE26C9ED1A6B099200FE7612 /* Build configuration list for PBXNativeTarget "JockulusTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +535,7 @@
 				BE26C9EF1A6B099200FE7612 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
