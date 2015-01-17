@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BE26C9CA1A6B099200FE7612 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9C91A6B099200FE7612 /* main.m */; };
+		BE26C9CD1A6B099200FE7612 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CC1A6B099200FE7612 /* AppDelegate.m */; };
+		BE26C9D01A6B099200FE7612 /* Jockulus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */; };
+		BE26C9D31A6B099200FE7612 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9D21A6B099200FE7612 /* ViewController.m */; };
+		BE26C9D81A6B099200FE7612 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE26C9D71A6B099200FE7612 /* Images.xcassets */; };
+		BE26C9DB1A6B099200FE7612 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE26C9D91A6B099200FE7612 /* LaunchScreen.xib */; };
+		BE26C9E71A6B099200FE7612 /* JockulusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9E61A6B099200FE7612 /* JockulusTests.m */; };
+		BE26CA041A6B09AD00FE7612 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9F21A6B09AD00FE7612 /* AFHTTPRequestOperation.m */; };
+		BE26CA051A6B09AD00FE7612 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9F41A6B09AD00FE7612 /* AFHTTPRequestOperationManager.m */; };
+		BE26CA061A6B09AD00FE7612 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9F61A6B09AD00FE7612 /* AFHTTPSessionManager.m */; };
+		BE26CA071A6B09AD00FE7612 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9F91A6B09AD00FE7612 /* AFNetworkReachabilityManager.m */; };
+		BE26CA081A6B09AD00FE7612 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9FB1A6B09AD00FE7612 /* AFSecurityPolicy.m */; };
+		BE26CA091A6B09AD00FE7612 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9FD1A6B09AD00FE7612 /* AFURLConnectionOperation.m */; };
+		BE26CA0A1A6B09AD00FE7612 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9FF1A6B09AD00FE7612 /* AFURLRequestSerialization.m */; };
+		BE26CA0B1A6B09AD00FE7612 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26CA011A6B09AD00FE7612 /* AFURLResponseSerialization.m */; };
+		BE26CA0C1A6B09AD00FE7612 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26CA031A6B09AD00FE7612 /* AFURLSessionManager.m */; };
+		BE26CA0F1A6B09F800FE7612 /* LogInWIthSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26CA0E1A6B09F800FE7612 /* LogInWIthSpotify.m */; };
+		BE26CA121A6B0A0200FE7612 /* JCSong.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26CA111A6B0A0200FE7612 /* JCSong.m */; };
+		BE26CA141A6B0A0D00FE7612 /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE26CA131A6B0A0D00FE7612 /* MyoKit.framework */; };
+		BE26CA161A6B0A1A00FE7612 /* Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE26CA151A6B0A1A00FE7612 /* Spotify.framework */; };
+		BE26CA181A6B0A3D00FE7612 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE26CA171A6B0A3D00FE7612 /* Main.storyboard */; };
+		BE26CA1A1A6B0A4E00FE7612 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE26CA191A6B0A4E00FE7612 /* SystemConfiguration.framework */; };
+		BE26CA1C1A6B0A5400FE7612 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE26CA1B1A6B0A5400FE7612 /* CoreBluetooth.framework */; };
+		BE26CA1E1A6B0A6F00FE7612 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE26CA1D1A6B0A6F00FE7612 /* AVFoundation.framework */; };
+		BE26CA201A6B0C3800FE7612 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE26CA1F1A6B0C3800FE7612 /* CoreMotion.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BE26C9E11A6B099200FE7612 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE26C9BC1A6B099100FE7612 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE26C9C31A6B099100FE7612;
+			remoteInfo = Jockulus;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BE26C9C41A6B099100FE7612 /* Jockulus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jockulus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE26C9C81A6B099200FE7612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE26C9C91A6B099200FE7612 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BE26C9CB1A6B099200FE7612 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BE26C9CC1A6B099200FE7612 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BE26C9CF1A6B099200FE7612 /* Jockulus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Jockulus.xcdatamodel; sourceTree = "<group>"; };
+		BE26C9D11A6B099200FE7612 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BE26C9D21A6B099200FE7612 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BE26C9D71A6B099200FE7612 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BE26C9DA1A6B099200FE7612 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BE26C9E01A6B099200FE7612 /* JockulusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JockulusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE26C9E51A6B099200FE7612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE26C9E61A6B099200FE7612 /* JockulusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JockulusTests.m; sourceTree = "<group>"; };
+		BE26C9F11A6B09AD00FE7612 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		BE26C9F21A6B09AD00FE7612 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		BE26C9F31A6B09AD00FE7612 /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		BE26C9F41A6B09AD00FE7612 /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		BE26C9F51A6B09AD00FE7612 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		BE26C9F61A6B09AD00FE7612 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		BE26C9F71A6B09AD00FE7612 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		BE26C9F81A6B09AD00FE7612 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		BE26C9F91A6B09AD00FE7612 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		BE26C9FA1A6B09AD00FE7612 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		BE26C9FB1A6B09AD00FE7612 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		BE26C9FC1A6B09AD00FE7612 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		BE26C9FD1A6B09AD00FE7612 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		BE26C9FE1A6B09AD00FE7612 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		BE26C9FF1A6B09AD00FE7612 /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		BE26CA001A6B09AD00FE7612 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		BE26CA011A6B09AD00FE7612 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		BE26CA021A6B09AD00FE7612 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		BE26CA031A6B09AD00FE7612 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		BE26CA0D1A6B09F800FE7612 /* LogInWIthSpotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInWIthSpotify.h; sourceTree = "<group>"; };
+		BE26CA0E1A6B09F800FE7612 /* LogInWIthSpotify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInWIthSpotify.m; sourceTree = "<group>"; };
+		BE26CA101A6B0A0200FE7612 /* JCSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JCSong.h; sourceTree = "<group>"; };
+		BE26CA111A6B0A0200FE7612 /* JCSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JCSong.m; sourceTree = "<group>"; };
+		BE26CA131A6B0A0D00FE7612 /* MyoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MyoKit.framework; path = Jockulus/MyoKit.framework; sourceTree = "<group>"; };
+		BE26CA151A6B0A1A00FE7612 /* Spotify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Spotify.framework; path = Jockulus/Spotify.framework; sourceTree = "<group>"; };
+		BE26CA171A6B0A3D00FE7612 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BE26CA191A6B0A4E00FE7612 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BE26CA1B1A6B0A5400FE7612 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		BE26CA1D1A6B0A6F00FE7612 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BE26CA1F1A6B0C3800FE7612 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE26C9C11A6B099100FE7612 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE26CA201A6B0C3800FE7612 /* CoreMotion.framework in Frameworks */,
+				BE26CA1E1A6B0A6F00FE7612 /* AVFoundation.framework in Frameworks */,
+				BE26CA1C1A6B0A5400FE7612 /* CoreBluetooth.framework in Frameworks */,
+				BE26CA1A1A6B0A4E00FE7612 /* SystemConfiguration.framework in Frameworks */,
+				BE26CA141A6B0A0D00FE7612 /* MyoKit.framework in Frameworks */,
+				BE26CA161A6B0A1A00FE7612 /* Spotify.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE26C9DD1A6B099200FE7612 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE26C9BB1A6B099100FE7612 = {
+			isa = PBXGroup;
+			children = (
+				BE26CA1F1A6B0C3800FE7612 /* CoreMotion.framework */,
+				BE26CA151A6B0A1A00FE7612 /* Spotify.framework */,
+				BE26CA131A6B0A0D00FE7612 /* MyoKit.framework */,
+				BE26CA1D1A6B0A6F00FE7612 /* AVFoundation.framework */,
+				BE26CA1B1A6B0A5400FE7612 /* CoreBluetooth.framework */,
+				BE26CA191A6B0A4E00FE7612 /* SystemConfiguration.framework */,
+				BE26C9C61A6B099100FE7612 /* Jockulus */,
+				BE26C9E31A6B099200FE7612 /* JockulusTests */,
+				BE26C9C51A6B099100FE7612 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BE26C9C51A6B099100FE7612 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE26C9C41A6B099100FE7612 /* Jockulus.app */,
+				BE26C9E01A6B099200FE7612 /* JockulusTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE26C9C61A6B099100FE7612 /* Jockulus */ = {
+			isa = PBXGroup;
+			children = (
+				BE26CA101A6B0A0200FE7612 /* JCSong.h */,
+				BE26CA111A6B0A0200FE7612 /* JCSong.m */,
+				BE26CA0D1A6B09F800FE7612 /* LogInWIthSpotify.h */,
+				BE26CA0E1A6B09F800FE7612 /* LogInWIthSpotify.m */,
+				BE26C9F01A6B09AD00FE7612 /* AFNetworking */,
+				BE26C9CB1A6B099200FE7612 /* AppDelegate.h */,
+				BE26C9CC1A6B099200FE7612 /* AppDelegate.m */,
+				BE26C9D11A6B099200FE7612 /* ViewController.h */,
+				BE26CA171A6B0A3D00FE7612 /* Main.storyboard */,
+				BE26C9D21A6B099200FE7612 /* ViewController.m */,
+				BE26C9D71A6B099200FE7612 /* Images.xcassets */,
+				BE26C9D91A6B099200FE7612 /* LaunchScreen.xib */,
+				BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */,
+				BE26C9C71A6B099100FE7612 /* Supporting Files */,
+			);
+			path = Jockulus;
+			sourceTree = "<group>";
+		};
+		BE26C9C71A6B099100FE7612 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE26C9C81A6B099200FE7612 /* Info.plist */,
+				BE26C9C91A6B099200FE7612 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE26C9E31A6B099200FE7612 /* JockulusTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE26C9E61A6B099200FE7612 /* JockulusTests.m */,
+				BE26C9E41A6B099200FE7612 /* Supporting Files */,
+			);
+			path = JockulusTests;
+			sourceTree = "<group>";
+		};
+		BE26C9E41A6B099200FE7612 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE26C9E51A6B099200FE7612 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE26C9F01A6B09AD00FE7612 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				BE26C9F11A6B09AD00FE7612 /* AFHTTPRequestOperation.h */,
+				BE26C9F21A6B09AD00FE7612 /* AFHTTPRequestOperation.m */,
+				BE26C9F31A6B09AD00FE7612 /* AFHTTPRequestOperationManager.h */,
+				BE26C9F41A6B09AD00FE7612 /* AFHTTPRequestOperationManager.m */,
+				BE26C9F51A6B09AD00FE7612 /* AFHTTPSessionManager.h */,
+				BE26C9F61A6B09AD00FE7612 /* AFHTTPSessionManager.m */,
+				BE26C9F71A6B09AD00FE7612 /* AFNetworking.h */,
+				BE26C9F81A6B09AD00FE7612 /* AFNetworkReachabilityManager.h */,
+				BE26C9F91A6B09AD00FE7612 /* AFNetworkReachabilityManager.m */,
+				BE26C9FA1A6B09AD00FE7612 /* AFSecurityPolicy.h */,
+				BE26C9FB1A6B09AD00FE7612 /* AFSecurityPolicy.m */,
+				BE26C9FC1A6B09AD00FE7612 /* AFURLConnectionOperation.h */,
+				BE26C9FD1A6B09AD00FE7612 /* AFURLConnectionOperation.m */,
+				BE26C9FE1A6B09AD00FE7612 /* AFURLRequestSerialization.h */,
+				BE26C9FF1A6B09AD00FE7612 /* AFURLRequestSerialization.m */,
+				BE26CA001A6B09AD00FE7612 /* AFURLResponseSerialization.h */,
+				BE26CA011A6B09AD00FE7612 /* AFURLResponseSerialization.m */,
+				BE26CA021A6B09AD00FE7612 /* AFURLSessionManager.h */,
+				BE26CA031A6B09AD00FE7612 /* AFURLSessionManager.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE26C9C31A6B099100FE7612 /* Jockulus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE26C9EA1A6B099200FE7612 /* Build configuration list for PBXNativeTarget "Jockulus" */;
+			buildPhases = (
+				BE26C9C01A6B099100FE7612 /* Sources */,
+				BE26C9C11A6B099100FE7612 /* Frameworks */,
+				BE26C9C21A6B099100FE7612 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Jockulus;
+			productName = Jockulus;
+			productReference = BE26C9C41A6B099100FE7612 /* Jockulus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BE26C9DF1A6B099200FE7612 /* JockulusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE26C9ED1A6B099200FE7612 /* Build configuration list for PBXNativeTarget "JockulusTests" */;
+			buildPhases = (
+				BE26C9DC1A6B099200FE7612 /* Sources */,
+				BE26C9DD1A6B099200FE7612 /* Frameworks */,
+				BE26C9DE1A6B099200FE7612 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE26C9E21A6B099200FE7612 /* PBXTargetDependency */,
+			);
+			name = JockulusTests;
+			productName = JockulusTests;
+			productReference = BE26C9E01A6B099200FE7612 /* JockulusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE26C9BC1A6B099100FE7612 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0620;
+				ORGANIZATIONNAME = "Jason Scharff";
+				TargetAttributes = {
+					BE26C9C31A6B099100FE7612 = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					BE26C9DF1A6B099200FE7612 = {
+						CreatedOnToolsVersion = 6.2;
+						TestTargetID = BE26C9C31A6B099100FE7612;
+					};
+				};
+			};
+			buildConfigurationList = BE26C9BF1A6B099100FE7612 /* Build configuration list for PBXProject "Jockulus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BE26C9BB1A6B099100FE7612;
+			productRefGroup = BE26C9C51A6B099100FE7612 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE26C9C31A6B099100FE7612 /* Jockulus */,
+				BE26C9DF1A6B099200FE7612 /* JockulusTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE26C9C21A6B099100FE7612 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE26CA181A6B0A3D00FE7612 /* Main.storyboard in Resources */,
+				BE26C9DB1A6B099200FE7612 /* LaunchScreen.xib in Resources */,
+				BE26C9D81A6B099200FE7612 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE26C9DE1A6B099200FE7612 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE26C9C01A6B099100FE7612 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE26CA121A6B0A0200FE7612 /* JCSong.m in Sources */,
+				BE26C9CD1A6B099200FE7612 /* AppDelegate.m in Sources */,
+				BE26CA081A6B09AD00FE7612 /* AFSecurityPolicy.m in Sources */,
+				BE26C9D01A6B099200FE7612 /* Jockulus.xcdatamodeld in Sources */,
+				BE26CA051A6B09AD00FE7612 /* AFHTTPRequestOperationManager.m in Sources */,
+				BE26CA091A6B09AD00FE7612 /* AFURLConnectionOperation.m in Sources */,
+				BE26CA041A6B09AD00FE7612 /* AFHTTPRequestOperation.m in Sources */,
+				BE26C9D31A6B099200FE7612 /* ViewController.m in Sources */,
+				BE26CA0A1A6B09AD00FE7612 /* AFURLRequestSerialization.m in Sources */,
+				BE26CA061A6B09AD00FE7612 /* AFHTTPSessionManager.m in Sources */,
+				BE26CA071A6B09AD00FE7612 /* AFNetworkReachabilityManager.m in Sources */,
+				BE26CA0B1A6B09AD00FE7612 /* AFURLResponseSerialization.m in Sources */,
+				BE26CA0C1A6B09AD00FE7612 /* AFURLSessionManager.m in Sources */,
+				BE26CA0F1A6B09F800FE7612 /* LogInWIthSpotify.m in Sources */,
+				BE26C9CA1A6B099200FE7612 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE26C9DC1A6B099200FE7612 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE26C9E71A6B099200FE7612 /* JockulusTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BE26C9E21A6B099200FE7612 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE26C9C31A6B099100FE7612 /* Jockulus */;
+			targetProxy = BE26C9E11A6B099200FE7612 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE26C9D91A6B099200FE7612 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE26C9DA1A6B099200FE7612 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BE26C9E81A6B099200FE7612 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BE26C9E91A6B099200FE7612 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BE26C9EB1A6B099200FE7612 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Jockulus",
+				);
+				INFOPLIST_FILE = Jockulus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BE26C9EC1A6B099200FE7612 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Jockulus",
+				);
+				INFOPLIST_FILE = Jockulus/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BE26C9EE1A6B099200FE7612 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JockulusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jockulus.app/Jockulus";
+			};
+			name = Debug;
+		};
+		BE26C9EF1A6B099200FE7612 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JockulusTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jockulus.app/Jockulus";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE26C9BF1A6B099100FE7612 /* Build configuration list for PBXProject "Jockulus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE26C9E81A6B099200FE7612 /* Debug */,
+				BE26C9E91A6B099200FE7612 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE26C9EA1A6B099200FE7612 /* Build configuration list for PBXNativeTarget "Jockulus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE26C9EB1A6B099200FE7612 /* Debug */,
+				BE26C9EC1A6B099200FE7612 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BE26C9ED1A6B099200FE7612 /* Build configuration list for PBXNativeTarget "JockulusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE26C9EE1A6B099200FE7612 /* Debug */,
+				BE26C9EF1A6B099200FE7612 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BE26C9CF1A6B099200FE7612 /* Jockulus.xcdatamodel */,
+			);
+			currentVersion = BE26C9CF1A6B099200FE7612 /* Jockulus.xcdatamodel */;
+			path = Jockulus.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = BE26C9BC1A6B099100FE7612 /* Project object */;
+}
