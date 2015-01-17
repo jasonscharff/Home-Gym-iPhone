@@ -11,7 +11,6 @@
 		BEAD94E71A6A41C400B29095 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94E61A6A41C400B29095 /* AVFoundation.framework */; };
 		BEAD94EA1A6A4EA700B29095 /* LogInWIthSpotify.m in Sources */ = {isa = PBXBuildFile; fileRef = BEAD94E91A6A4EA700B29095 /* LogInWIthSpotify.m */; };
 		BEAD94EC1A6A58D300B29095 /* ConnectToSpotify.png in Resources */ = {isa = PBXBuildFile; fileRef = BEAD94EB1A6A58D300B29095 /* ConnectToSpotify.png */; };
-		BEAD94F01A6A90F900B29095 /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94EF1A6A90F900B29095 /* MyoKit.framework */; };
 		BEAD94F21A6A916100B29095 /* MyoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94F11A6A916100B29095 /* MyoKit.framework */; };
 		BEAD94F41A6A916F00B29095 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94F31A6A916F00B29095 /* CoreBluetooth.framework */; };
 		BEAD94F61A6A918100B29095 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEAD94F51A6A918100B29095 /* SystemConfiguration.framework */; };
@@ -104,7 +103,6 @@
 				BEAD94F41A6A916F00B29095 /* CoreBluetooth.framework in Frameworks */,
 				BEAD94E71A6A41C400B29095 /* AVFoundation.framework in Frameworks */,
 				BEAD94F21A6A916100B29095 /* MyoKit.framework in Frameworks */,
-				BEAD94F01A6A90F900B29095 /* MyoKit.framework in Frameworks */,
 				BEED931F1A6A0E790062B901 /* CoreMotion.framework in Frameworks */,
 				BEAD94E51A6A3B0400B29095 /* Spotify.framework in Frameworks */,
 			);
