@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE17F2A71A6B7B2A00F3622C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE17F2A61A6B7B2A00F3622C /* FacebookSDK.framework */; };
+		BE17F2AA1A6B7CEA00F3622C /* facebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE17F2A91A6B7CEA00F3622C /* facebookViewController.m */; };
 		BE26C9CA1A6B099200FE7612 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9C91A6B099200FE7612 /* main.m */; };
 		BE26C9CD1A6B099200FE7612 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CC1A6B099200FE7612 /* AppDelegate.m */; };
 		BE26C9D01A6B099200FE7612 /* Jockulus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */; };
@@ -45,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE17F2A61A6B7B2A00F3622C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		BE17F2A81A6B7CEA00F3622C /* facebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebookViewController.h; sourceTree = "<group>"; };
+		BE17F2A91A6B7CEA00F3622C /* facebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = facebookViewController.m; sourceTree = "<group>"; };
 		BE26C9C41A6B099100FE7612 /* Jockulus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jockulus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE26C9C81A6B099200FE7612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE26C9C91A6B099200FE7612 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -101,6 +106,7 @@
 				BE26CA1A1A6B0A4E00FE7612 /* SystemConfiguration.framework in Frameworks */,
 				BE26CA141A6B0A0D00FE7612 /* MyoKit.framework in Frameworks */,
 				BE26CA161A6B0A1A00FE7612 /* Spotify.framework in Frameworks */,
+				BE17F2A71A6B7B2A00F3622C /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +123,7 @@
 		BE26C9BB1A6B099100FE7612 = {
 			isa = PBXGroup;
 			children = (
+				BE17F2A61A6B7B2A00F3622C /* FacebookSDK.framework */,
 				BE26CA1F1A6B0C3800FE7612 /* CoreMotion.framework */,
 				BE26CA151A6B0A1A00FE7612 /* Spotify.framework */,
 				BE26CA131A6B0A0D00FE7612 /* MyoKit.framework */,
@@ -150,6 +157,8 @@
 				BE26C9CC1A6B099200FE7612 /* AppDelegate.m */,
 				BE26C9D11A6B099200FE7612 /* ViewController.h */,
 				BE26CA171A6B0A3D00FE7612 /* Main.storyboard */,
+				BE17F2A81A6B7CEA00F3622C /* facebookViewController.h */,
+				BE17F2A91A6B7CEA00F3622C /* facebookViewController.m */,
 				BE26C9D21A6B099200FE7612 /* ViewController.m */,
 				BE26C9D71A6B099200FE7612 /* Images.xcassets */,
 				BE26C9D91A6B099200FE7612 /* LaunchScreen.xib */,
@@ -323,6 +332,7 @@
 				BE26CA061A6B09AD00FE7612 /* AFHTTPSessionManager.m in Sources */,
 				BE26CA071A6B09AD00FE7612 /* AFNetworkReachabilityManager.m in Sources */,
 				BE26CA0B1A6B09AD00FE7612 /* AFURLResponseSerialization.m in Sources */,
+				BE17F2AA1A6B7CEA00F3622C /* facebookViewController.m in Sources */,
 				BE26CA0C1A6B09AD00FE7612 /* AFURLSessionManager.m in Sources */,
 				BE26CA0F1A6B09F800FE7612 /* LogInWIthSpotify.m in Sources */,
 				BE26C9CA1A6B099200FE7612 /* main.m in Sources */,
@@ -444,6 +454,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jockulus",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Jockulus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -458,6 +469,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jockulus",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Jockulus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -518,6 +530,7 @@
 				BE26C9EC1A6B099200FE7612 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE26C9ED1A6B099200FE7612 /* Build configuration list for PBXNativeTarget "JockulusTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +539,7 @@
 				BE26C9EF1A6B099200FE7612 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

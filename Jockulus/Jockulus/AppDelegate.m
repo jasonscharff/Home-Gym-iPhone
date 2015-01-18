@@ -10,6 +10,7 @@
 #import <Spotify/Spotify.h>
 #import <MyoKit/MyoKit.h>
 #import "AFHTTPRequestOperationManager.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface AppDelegate ()
 
@@ -28,6 +29,7 @@
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [TLMHub sharedHub];
+    [FBLoginView class];
     
     
     return YES;
@@ -50,10 +52,18 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    [FBAppEvents activateApp];
+    [FBAppCall handleDidBecomeActiveWithSession:self.session_fb];
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    
+    [self.session_fb close];
+    
+    
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
@@ -197,6 +207,17 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
          }];
         return YES;
     }
+    else
+    {
+        
+    }
+    
+    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.session_fb];
+    return wasHandled;
+
+    
+    
     
     return NO;
 }

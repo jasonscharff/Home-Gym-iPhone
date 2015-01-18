@@ -42,10 +42,15 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>Jockulus</string>
+				<string>fb826856194027238</string>
 			</array>
 			<key>CFBundleURLName</key>
 			<string>com.pennapps.gomurmur</string>
 		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>826856194027238</string>
+	<key>FacebookDisplayName</key>
+	<string>Jockulus</string>
 </dict>
 </plist>
