@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		BE17F2A71A6B7B2A00F3622C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE17F2A61A6B7B2A00F3622C /* FacebookSDK.framework */; };
 		BE17F2AA1A6B7CEA00F3622C /* facebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE17F2A91A6B7CEA00F3622C /* facebookViewController.m */; };
+		BE17F2AC1A6BFE8100F3622C /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE17F2AB1A6BFE8100F3622C /* Images-2.xcassets */; };
+		BE17F2AE1A6BFF3A00F3622C /* launch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BE17F2AD1A6BFF3A00F3622C /* launch.jpg */; };
 		BE26C9CA1A6B099200FE7612 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9C91A6B099200FE7612 /* main.m */; };
 		BE26C9CD1A6B099200FE7612 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CC1A6B099200FE7612 /* AppDelegate.m */; };
 		BE26C9D01A6B099200FE7612 /* Jockulus.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */; };
@@ -50,6 +52,8 @@
 		BE17F2A61A6B7B2A00F3622C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		BE17F2A81A6B7CEA00F3622C /* facebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebookViewController.h; sourceTree = "<group>"; };
 		BE17F2A91A6B7CEA00F3622C /* facebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = facebookViewController.m; sourceTree = "<group>"; };
+		BE17F2AB1A6BFE8100F3622C /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
+		BE17F2AD1A6BFF3A00F3622C /* launch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = launch.jpg; sourceTree = "<group>"; };
 		BE26C9C41A6B099100FE7612 /* Jockulus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jockulus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE26C9C81A6B099200FE7612 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE26C9C91A6B099200FE7612 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 		BE26C9BB1A6B099100FE7612 = {
 			isa = PBXGroup;
 			children = (
+				BE17F2AD1A6BFF3A00F3622C /* launch.jpg */,
 				BE17F2A61A6B7B2A00F3622C /* FacebookSDK.framework */,
 				BE26CA1F1A6B0C3800FE7612 /* CoreMotion.framework */,
 				BE26CA151A6B0A1A00FE7612 /* Spotify.framework */,
@@ -163,6 +168,7 @@
 				BE26C9D71A6B099200FE7612 /* Images.xcassets */,
 				BE26C9D91A6B099200FE7612 /* LaunchScreen.xib */,
 				BE26C9CE1A6B099200FE7612 /* Jockulus.xcdatamodeld */,
+				BE17F2AB1A6BFE8100F3622C /* Images-2.xcassets */,
 				BE26C9C71A6B099100FE7612 /* Supporting Files */,
 			);
 			path = Jockulus;
@@ -301,7 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE26CA181A6B0A3D00FE7612 /* Main.storyboard in Resources */,
+				BE17F2AE1A6BFF3A00F3622C /* launch.jpg in Resources */,
 				BE26C9DB1A6B099200FE7612 /* LaunchScreen.xib in Resources */,
+				BE17F2AC1A6BFE8100F3622C /* Images-2.xcassets in Resources */,
 				BE26C9D81A6B099200FE7612 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,6 +459,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jockulus",
@@ -466,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Jockulus",
