@@ -12,5 +12,6 @@
 
 @property(strong, nonatomic) NSString *spotify_id;
 @property(strong, nonatomic) NSString *echonest_id;
+@property(nonatomic) double durationInSeconds;
 
 @end

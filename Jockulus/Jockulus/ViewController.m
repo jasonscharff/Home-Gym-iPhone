@@ -20,14 +20,20 @@
 
 @property (nonatomic, strong) CMPedometer *counter;
 @property(nonatomic, strong) NSTimer *timer;
+@property(nonatomic, strong) NSTimer *timeInSong;
+@property(nonatomic)int threshold;
 
 @property(nonatomic, strong) NSArray *playlist;
 @property(nonatomic) int lastStepCount;
+@property (nonatomic) int timeSinceCall;
 @property(nonatomic) int placeInList;
+@property (nonatomic) int numberZeroes;
 
 @property(nonatomic) TLMPoseType defaultPosition;
 
 @property (nonatomic, strong) SPTAudioStreamingController *player;
+
+@property (nonatomic) BOOL isPaused;
 
 
 
@@ -39,16 +45,18 @@
 
 static NSString * const kClientId = @"2c2e95538e2d46a19ba2cdd910883947";
 static NSString * const kCallbackURL = @"jockulus://callback";
+
 static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:1234/swap";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self prepNavBar];
-    self.lastStepCount = -25;
+    self.lastStepCount = -1000;
     self.placeInList = 0;
     self.defaultPosition = 0;
+    self.threshold = 40;
     
-    _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
     
     
     
@@ -68,55 +76,29 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     
     NSLog(@"YOU MOVED");
     TLMPose *pose = notification.userInfo[kTLMKeyPose];
-    if(self.defaultPosition == 0)
-    {
-        self.defaultPosition = pose.type;
-    }
     
-    if(self.defaultPosition == TLMPoseTypeFist)
-    {
-        if(pose.type == TLMPoseTypeFist)
-        {
-            [_player setIsPlaying:YES callback:^(NSError *error) {
-                if(error)
-                {
-                    NSLog(@"%@", error);
-                }
-            }];
-        }
-        else if (pose.type == TLMPoseTypeFingersSpread)
-        {
-            [_player setIsPlaying:NO callback:^(NSError *error) {
-                if(error)
-                {
-                    NSLog(@"%@", error);
-                }
-            }];
-        }
-    }
     
-    else
-    {
-        if(pose.type == TLMPoseTypeFist)
-        {
-            [_player setIsPlaying:NO callback:^(NSError *error) {
-                if(error)
-                {
-                    NSLog(@"%@", error);
-                }
-            }];
-        }
-        else if (pose.type == TLMPoseTypeFingersSpread)
-        {
-            [_player setIsPlaying:YES callback:^(NSError *error) {
-                if(error)
-                {
-                    NSLog(@"%@", error);
-                }
-            }];
-        }
-        
-    }
+//    
+//        if(pose.type == TLMPoseTypeFist)
+//        {
+//            [_player setIsPlaying:NO callback:^(NSError *error) {
+//                if(error)
+//                {
+//                    NSLog(@"%@", error);
+//                }
+//            }];
+//        }
+//        else if (pose.type == TLMPoseTypeFingersSpread)
+//        {
+//            [_player setIsPlaying:YES callback:^(NSError *error) {
+//                if(error)
+//                {
+//                    NSLog(@"%@", error);
+//                }
+//            }];
+//        }
+    
+    
     
     if(pose.type == TLMPoseTypeDoubleTap)
     {
@@ -143,49 +125,8 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     
     else if (pose.type == TLMPoseTypeWaveIn || pose.type == TLMPoseTypeWaveOut)
     {
-        if([self.playlist count] >= 1 )
-        {
-            self.placeInList++;
-            if (self.placeInList == [self.playlist count])
-            {
-                _placeInList = 0;
-            }
-            
-            NSString *track = @"spotify:track:";
-            
-            
-            
-            
-            
-            JCSong *song = self.playlist[self.placeInList];
-            
-            track = [track stringByAppendingString:song.spotify_id];
-            [SPTTrack trackWithURI:[NSURL URLWithString:track] session:nil callback:^(NSError *error, id object) {
-                if(error != nil)
-                {
-                    NSLog(@"%@", error);
-                }
-                else
-                {
-                    NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
-                    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                    NSDictionary *parameters = @{@"echo_nest_id": song.echonest_id, @"username" : username};
-                    [manager POST:@"http://pennapps.gomurmur.com/update_song.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                        //                    NSLog(@"%@", responseObject);
-                    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        NSLog(@"Error: %@", error);
-                        
-                    }];
-                    
-                    [self.player playTrackProvider:object callback:nil];
-                }
-                
-                
-            }];
-            
-            
-        }
-        
+        NSLog(@"FROM MYO");
+        [self nextSong];
     }
     
 }
@@ -193,7 +134,15 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
 
 -(void)getNumberOfSteps
 {
-    NSDate *startDate = [[NSDate date] dateByAddingTimeInterval:-5];
+    self.timeSinceCall++;
+    if(self.timeSinceCall == 2)
+    {
+        self.threshold = 40;
+    }
+    
+    
+    
+    NSDate *startDate = [[NSDate date] dateByAddingTimeInterval:-8];
     
     self.counter = [[CMPedometer alloc] init];
     
@@ -211,13 +160,35 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
          }
          else
          {
-             
-             NSNumber *stepCount = [[NSNumber alloc] initWithInt:(pedometerData.numberOfSteps.intValue * 20)];
-             NSLog(@"%@", stepCount);
-             
-             if (self.lastStepCount > stepCount.intValue + 21 || self.lastStepCount < (stepCount.intValue - 21))
+             NSNumber *stepCount;
+             if(pedometerData.numberOfSteps.intValue == 0)
              {
+                 self.numberZeroes++;
+             }
+             else
+             {
+                 self.numberZeroes = 0;
+             }
+             if(_numberZeroes == 4)
+             {
+                 stepCount = [[NSNumber alloc]initWithInt:0];
+             }
+             else
+             {
+                 stepCount = [[NSNumber alloc] initWithInt:(pedometerData.numberOfSteps.intValue * 7.5)];
+             }
+
+             
+             
+             NSLog(@"Step Count: %@", stepCount);
+             
+             if (self.lastStepCount > stepCount.intValue + self.threshold || self.lastStepCount < (stepCount.intValue - self.threshold))
+             {
+                 NSLog(@"Within Threshold");
+                 self.timeSinceCall = 0;
+                 self.threshold = 80;
                  [self sendToNetwork:stepCount];
+                 self.lastStepCount = stepCount.intValue;
              }
              else
              {
@@ -232,8 +203,9 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
                      NSLog(@"Error: %@", error);
                  }];
                  
+                 
              }
-             self.lastStepCount = stepCount.intValue;
+             
              
              
          }
@@ -252,7 +224,7 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSDictionary *parameters = @{@"bpm": steps};
     [manager POST:@"http://pennapps.gomurmur.com/get_songs.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
+        NSLog(@"Response: %@", responseObject);
         if([responseObject containsObject: @"not moving"] == true)
         {
             [_player setIsPlaying:NO callback:^(NSError *error) {
@@ -265,9 +237,12 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
         else
         {
             toReturn = true;
-            [self parseSongs:responseObject];
-            NSString *value = responseObject[0][@"id"];
-            NSLog(@"%@", value);
+            if([responseObject count] > 0)
+            {
+                [self parseSongs:responseObject];
+                NSString *value = responseObject[0][@"id"];
+                NSLog(@"%@", value);
+            }
         }
         
         
@@ -305,6 +280,8 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
         JCSong *song = [[JCSong alloc]init];
         
         song.spotify_id = response[i][@"id"];
+        NSNumber *temp = response[i][@"duration"];
+        song.durationInSeconds = temp.doubleValue;
         if([[@"spotify:track:" stringByAppendingString:song.spotify_id]isEqualToString:[self.player currentTrackMetadata][@"SPTAudioStreamingMetadataTrackURI"]])
         {
             startOver = false;
@@ -318,6 +295,9 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     
     if([self.player isPlaying] == NO || startOver == true)
     {
+        self.placeInList = (arc4random() % [array count]);
+        
+        
         self.playlist = array;
         AppDelegate *delegate=(AppDelegate *)[[UIApplication sharedApplication] delegate];
         [self playUsingSession:delegate.session];
@@ -448,6 +428,13 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
                 }];
                 
                 [self.player playTrackProvider:object callback:nil];
+                
+               
+                
+
+                
+                [self.timeInSong invalidate];
+                self.timeInSong = [NSTimer scheduledTimerWithTimeInterval:song.durationInSeconds target:self selector:@selector(nextSong) userInfo:nil repeats:YES];
             }
             
             
@@ -455,6 +442,53 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
         
         
     }];
+    
+    
+    
+}
+
+-(void)nextSong
+{
+    NSLog(@"Next Song Activated");
+    self.placeInList++;
+    if(self.placeInList == [self.playlist count])
+    {
+        self.placeInList = 0;
+    }
+    
+    JCSong *song = self.playlist[self.placeInList];
+    NSString *track = @"spotify:track:";
+    track = [track stringByAppendingString:song.spotify_id];
+    
+    
+    [SPTTrack trackWithURI:[NSURL URLWithString:track] session:nil callback:^(NSError *error, id object) {
+        if(error != nil)
+        {
+            NSLog(@"%@", error);
+        }
+        else
+        {
+            NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            NSDictionary *parameters = @{@"echo_nest_id": song.echonest_id, @"username" : username};
+            [manager POST:@"http://pennapps.gomurmur.com/update_song.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                //                    NSLog(@"%@", responseObject);
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+                
+            }];
+            
+            
+            [self.player playTrackProvider:object callback:nil];
+            [self.timeInSong invalidate];
+            self.timeInSong = [NSTimer scheduledTimerWithTimeInterval:song.durationInSeconds target:self selector:@selector(nextSong) userInfo:nil repeats:NO];
+            
+        }
+        
+        
+    }];
+    
+
     
     
     
