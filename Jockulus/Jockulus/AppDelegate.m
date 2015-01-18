@@ -199,6 +199,7 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
              
              
              NSString *storyboardName = @"Main";
+             NSLog(@"HONESTLY, WHAT THE FUCK?");
              UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle: nil];
              UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"playView"];
              [(UINavigationController*)self.window.rootViewController pushViewController:vc animated:YES];
@@ -209,13 +210,13 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     }
     else
     {
-        
+        // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+        BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.session_fb];
+        return wasHandled;
+
     }
     
-    // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
-    BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication withSession:self.session_fb];
-    return wasHandled;
-
+    
     
     
     

@@ -29,6 +29,11 @@
 @property(nonatomic) int placeInList;
 @property (nonatomic) int numberZeroes;
 
+@property(nonatomic)NSDate *firstStep;
+@property(nonatomic) BOOL hasMoved;
+@property(nonatomic)BOOL shouldFinish;
+
+
 @property(nonatomic) TLMPoseType defaultPosition;
 
 @property (nonatomic, strong) SPTAudioStreamingController *player;
@@ -55,7 +60,8 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     self.placeInList = 0;
     self.defaultPosition = 0;
     self.threshold = 40;
-    
+    self.hasMoved = false;
+    self.firstStep = [NSDate date];
     _timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(getNumberOfSteps) userInfo:nil repeats:YES];
     
     
@@ -135,7 +141,7 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
 -(void)getNumberOfSteps
 {
     self.timeSinceCall++;
-    if(self.timeSinceCall == 2)
+    if(self.timeSinceCall == 3)
     {
         self.threshold = 40;
     }
@@ -161,6 +167,11 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
          else
          {
              NSNumber *stepCount;
+             if(pedometerData.numberOfSteps.intValue > 3 && self.hasMoved == false)
+             {
+                 self.hasMoved = true;
+             }
+             
              if(pedometerData.numberOfSteps.intValue == 0)
              {
                  self.numberZeroes++;
@@ -169,47 +180,77 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
              {
                  self.numberZeroes = 0;
              }
-             if(_numberZeroes == 4)
+             if(_numberZeroes == 4 && self.hasMoved == true)
              {
                  stepCount = [[NSNumber alloc]initWithInt:0];
+                 self.shouldFinish = true;
              }
              else
              {
                  stepCount = [[NSNumber alloc] initWithInt:(pedometerData.numberOfSteps.intValue * 7.5)];
              }
 
-             
-             
-             NSLog(@"Step Count: %@", stepCount);
-             
-             if (self.lastStepCount > stepCount.intValue + self.threshold || self.lastStepCount < (stepCount.intValue - self.threshold))
+             if(!self.shouldFinish)
              {
-                 NSLog(@"Within Threshold");
-                 self.timeSinceCall = 0;
-                 self.threshold = 80;
-                 [self sendToNetwork:stepCount];
-                 self.lastStepCount = stepCount.intValue;
-             }
-             else
-             {
-                 NSLog(@"here");
-                 AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                 NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
-                 NSDictionary *parametersSecond = @{@"bpm": stepCount, @"data" : @"update", @"username":username};
-                 [manager POST:@"http://pennapps.gomurmur.com/bpm.php" parameters:parametersSecond success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 NSLog(@"Step Count: %@", stepCount);
+                 
+                 if (self.lastStepCount > stepCount.intValue + self.threshold || self.lastStepCount < (stepCount.intValue - self.threshold))
+                 {
+                     NSLog(@"Within Threshold");
+                     self.timeSinceCall = 0;
+                     self.threshold = 80;
+                     [self sendToNetwork:stepCount];
+                     self.lastStepCount = stepCount.intValue;
+                 }
+                 else
+                 {
+                     NSLog(@"here");
+                     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                     NSString *username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+                     NSDictionary *parametersSecond = @{@"bpm": stepCount, @"data" : @"update", @"username":username};
+                     [manager POST:@"http://pennapps.gomurmur.com/bpm.php" parameters:parametersSecond success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         
+                         
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         NSLog(@"Error: %@", error);
+                     }];
                      
                      
-                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                     NSLog(@"Error: %@", error);
-                 }];
-                 
-                 
+                 }
              }
-             
              
              
          }
      }];
+    
+    if(self.shouldFinish == true)
+    {
+        NSDate *currentDate = [NSDate date];
+        NSDate *startDate = self.firstStep;
+        
+        [_counter queryPedometerDataFromDate:startDate toDate:currentDate withHandler:^(CMPedometerData *pedometerData, NSError *error)
+         {
+             [[NSUserDefaults standardUserDefaults] setObject:pedometerData.numberOfSteps forKey:@"steps"];
+             NSLog(@"Step VALUE FINAL: %i", pedometerData.numberOfSteps.intValue);
+             
+             
+         }];
+        [_player setIsPlaying:NO callback:^(NSError *error) {
+            if(error)
+            {
+                NSLog(@"%@", error);
+            }
+        }];
+        
+//        UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"share"];
+//        [self presentViewController:controller animated:YES completion:^{
+//            //
+//        }];
+        [self.timer invalidate];
+        [self.timeInSong invalidate];
+        [self performSegueWithIdentifier:@"share" sender:self];
+        
+    }
     
     
     
@@ -314,7 +355,13 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     
     UIColor *color = [self colorWithHexString:@"ffffff"];
     self.navigationController.navigationBar.tintColor = color;
-    self.navigationController.navigationBar.topItem.title = @"Back";
+    UIBarButtonItem *newBackButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
+    
     [self.navigationItem.backBarButtonItem setAction:@selector(perform:)];
     
     
@@ -429,8 +476,6 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
                 
                 [self.player playTrackProvider:object callback:nil];
                 
-               
-                
 
                 
                 [self.timeInSong invalidate];
@@ -483,6 +528,7 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
             [self.timeInSong invalidate];
             self.timeInSong = [NSTimer scheduledTimerWithTimeInterval:song.durationInSeconds target:self selector:@selector(nextSong) userInfo:nil repeats:NO];
             
+           
         }
         
         

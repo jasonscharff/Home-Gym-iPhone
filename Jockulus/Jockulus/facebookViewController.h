@@ -10,4 +10,7 @@
 
 @interface facebookViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIButton *facebookButton;
+@property (strong, nonatomic) IBOutlet UILabel *travelLabel;
+
 @end

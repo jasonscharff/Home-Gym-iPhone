@@ -59,8 +59,14 @@ static NSString * const kTokenSwapServiceURL = @"http://pennapps.gomurmur.com:12
     UIColor *color = [self colorWithHexString:@"ffffff"];
     self.navigationController.navigationBar.tintColor = color;
     
+    UIBarButtonItem *newBackButton =
+    [[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                     style:UIBarButtonItemStylePlain
+                                    target:nil
+                                    action:nil];
+    [[self navigationItem] setBackBarButtonItem:newBackButton];
     
-    
+  [self.navigationItem setHidesBackButton:YES animated:YES];
     
     NSDictionary *textAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                     color,NSForegroundColorAttributeName,
